@@ -66,7 +66,7 @@
                                                 <p><i class="zmdi zmdi-map"></i> {{$ticket->venue}},Kenya</p>
                                             </div>
                                             <!-- Schedule Btn -->
-                                            <a href="#" class="btn confer-btn">View More <i class="zmdi zmdi-long-arrow-right"></i></a>
+                                            <a href="/event/show" class="btn confer-btn">View More <i class="zmdi zmdi-long-arrow-right"></i></a>
                                         </div>
                                         @endforeach
 

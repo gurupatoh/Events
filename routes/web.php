@@ -32,6 +32,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home.index');
 Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::get('/event/show', 'EventController@show')->name('event.Show');
 Route::get('/event', 'EventController@index')->name('event.index');
+
 
 
