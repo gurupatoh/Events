@@ -15,7 +15,7 @@
             </div>
         </div>
         <!--form-->
-        <form action="" method="post">
+        <form action="" method="post" >
             {{csrf_field()}}
 <div class="form-group">
     <label for="title">title:</label>
@@ -37,6 +37,10 @@
                                     <label for="guest">guest:</label>
                                     <input type="text" id=""name="guest" class="form-control"required placeholder="guest*" value="{{$ticket->guest}}">
                                 </div>
+                                <div class="form-group">
+                                    <label for="guest">price:</label>
+                                    <input type="text" id=""name="price" class="form-control"required placeholder="price*" value="{{$ticket->price}}">
+                                </div>
         <div class="form-group">
     <label for="summary">description:</label>
     <input type="text" id="description"name="description" class="form-control"required placeholder="description*" value="{{$ticket->description}}">
@@ -54,6 +58,97 @@
 
 </div>
 </div>
+                        <div class="container">
+
+
+
+                            <div class="panel panel-primary">
+
+                                <div class="panel-heading"><h2>update Event image:</h2></div>
+
+                                <div class="panel-body">
+
+
+
+                                    @if ($message = Session::get('success'))
+
+                                        <div class="alert alert-success alert-block">
+
+                                            <button type="button" class="close" data-dismiss="alert">×</button>
+
+                                            <strong>{{ $message }}</strong>
+
+                                        </div>
+
+                                        <img src="images/{{ Session::get('image') }}">
+
+                                    @endif
+
+
+
+                                    @if (count($errors) > 0)
+
+                                        <div class="alert alert-danger">
+
+                                            <strong>Whoops!</strong> There were some problems with your input.
+
+                                            <ul>
+
+                                                @foreach ($errors->all() as $error)
+
+                                                    <li>{{ $error }}</li>
+
+                                                @endforeach
+
+                                            </ul>
+
+                                        </div>
+
+                                    @endif
+
+
+
+                                    <form action="" method="POST" enctype="multipart/form-data">
+
+                                        @csrf
+
+                                        <div class="row">
+
+
+
+                                            <div class="col-md-6">
+
+                                                <input type="file" id="image"name="image" class="form-control" value="{{$ticket->image}}">
+
+
+                                            </div>
+
+
+
+                                            <div class="col-md-6">
+
+                                                <button type="submit" class="btn btn-success">Upload</button>
+
+                                            </div>
+
+
+
+                                        </div>
+
+                                    </form>
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
     <button class="btn btn-primary"type="submit" name="submit">update</button>
             <a href="{{route('tickets.index')}}" class="btn btn-secondary " >Back</a>
 

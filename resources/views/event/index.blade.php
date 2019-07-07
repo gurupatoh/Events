@@ -2,8 +2,9 @@
 
 <!doctype html>
 <html lang="en">
+
 @include('layouts.partials.users._heading')
-@include('layouts.partials.users._navigate')<!-- Our Schedule Area Start -->
+ @include('layouts.partials.users._navigate')<!-- Our Schedule Area Start -->
 
 
 
@@ -14,28 +15,29 @@
 
 <!-- /Preloader -->
 
-<div>
-    <section class="our-schedule-area bg-white section-padding-100">
+<div><section class="banner-area organic-breadcrumb">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="schedule-tab">
-                        <!-- Nav Tabs -->
-                        <ul class="nav nav-tabs wow fadeInUp" data-wow-delay="300ms" id="conferScheduleTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="monday-tab" data-toggle="tab" href="#step-one" role="tab" aria-controls="step-one" aria-expanded="true">Monday <br> <span>January 14, 2019</span></a>
-                            </li>
-                            <!-- Nav Item -->
-                            <li class="nav-item">
-                                <a class="nav-link" id="tuesday-tab" data-toggle="tab" href="#step-two" role="tab" aria-controls="step-two" aria-expanded="true">Tuesday <br> <span>January 15, 2019</span></a>
-                            </li>
-                            <!-- Nav Item -->
-                            <li class="nav-item">
-                                <a class="nav-link" id="wednesday-tab" data-toggle="tab" href="#step-three" role="tab" aria-controls="step-three" aria-expanded="true">Wednesday <br> <span>January 16, 2019</span></a>
-                            </li>
-                        </ul>
+            <div>
+
+
+                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                    <div class="col-first">
+                        <h1>view Events</h1>
+                        <nav class="d-flex align-items-center">
+                            <a href="{{'home.index'}}">Home<span class="lnr lnr-arrow-right"></span></a>
+                            <a href="{{ route('event.index') }}">Events</a>
+                        </nav>
                     </div>
-                @foreach($tickets as $ticket)
+                </div>
+            </div>
+    </section>
+    <section>
+        <h2 align="center "> Event listing:-</h2>
+    </section>
+
+
+
+@foreach($tickets as $ticket)
 
 
                     <!-- Tab Content -->
@@ -66,7 +68,8 @@
                                                 <p><i class="zmdi zmdi-map"></i> {{$ticket->venue}},Kenya</p>
                                             </div>
                                             <!-- Schedule Btn -->
-                                            <a href="/event/show" class="btn confer-btn">View More <i class="zmdi zmdi-long-arrow-right"></i></a>
+                                            <a href="/event/show/{{$ticket->id}}" class="btn confer-btn">View More <i class="zmdi zmdi-long-arrow-right"></i></a>
+
                                         </div>
                                         @endforeach
 
@@ -107,3 +110,5 @@
 <!-- **** All JS Files ***** -->
 
 @include('layouts.partials.users._scripts')
+</body>
+</html>

@@ -31,9 +31,19 @@ Route::get('/tickets/{ticket}','TicketController@show')->name('tickets.show');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home.index');
-Route::get('/cart', 'CartController@index')->name('cart.index');
-Route::get('/event/show', 'EventController@show')->name('event.Show');
 Route::get('/event', 'EventController@index')->name('event.index');
+
+Route::get('/event/show/{ticket}', 'EventController@show')->name('event.Show');
+Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::post('/cart', 'CartController@store')->name('cart.store');
+Route::delete('/cart/{ticket}', 'CartController@destroy')->name('cart.destroy');
+Route::get('empty',function (){
+    Cart::destroy();
+
+});
+Route::get('/checkout','CheckoutController@index')->name('checkout.index');
+
+
 
 
 

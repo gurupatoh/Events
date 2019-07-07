@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
+
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -34,8 +37,20 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+ $duplicates= Cart::search(function ($CartItem,$rowId)use($request){
+return $CartItem->id === $request->id;
+ }
+    );
+ if($duplicates->isNotEmpty()){
+return redirect()->route('cart.index')->with('success_message','Ticket already added!');
+ }
+
+
+  Cart:: Add($request->id,$request->name,1,$request->price)->associate('App\Ticket');
+        return  redirect()->route('cart.index')->with('success_message','Ticket added');
+
     }
+
 
     /**
      * Display the specified resource.
@@ -79,6 +94,7 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Cart::remove($id);
+        return back()->with('success_message','Ticketed removed!');
     }
 }

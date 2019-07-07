@@ -164,7 +164,11 @@ return [
 
         /*
          * Package Service Providers...
+         *
          */
+        Gloudemans\Notify\LaravelNotifyServiceProvider::class,
+
+
 
         /*
          * Application Service Providers...
@@ -174,6 +178,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class
+
 
     ],
 
@@ -224,6 +230,7 @@ return [
         'Str' => Illuminate\Support\Str::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'View' => Illuminate\Support\Facades\View::class,
 
     ],

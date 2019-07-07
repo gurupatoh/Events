@@ -1,177 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx" class="no-js">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="CodePixar">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>confer</title>
 
-    <title>JAM Conf QC</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" id="snipcart" data-api-key="MzMxN2Y0ODMtOWNhMy00YzUzLWFiNTYtZjMwZTRkZDcxYzM4"></script>
-    <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" type="text/css" rel="stylesheet" />
-    <script type="text/javascript">
-        document.addEventListener('snipcart.ready', function() {
-            Snipcart.subscribe('item.adding', function(ev, item) {
-                if(item.id == 'jam-conf-qc' && item.metadata && item.metadata.fromHtml) {
-                    ev.preventDefault();
 
-                    var quantity = item.quantity;
-                    item.quantity = 1;
-
-                    Snipcart.api.configure('show_cart_automatically', false);
-
-                    var items = new Array(quantity).fill({
-                        id: item.id,
-                        name: item.name,
-                        price: item.price,
-                        url: item.url,
-                        customFields: item.customFields,
-                        stackable: false,
-                        shippable: item.shippable,
-                    });
-
-                    Snipcart.api.items.add(items).then(function(){
-                        Snipcart.api.configure('show_cart_automatically', true);
-                        Snipcart.api.modal.show();
-                    }, function() {
-                        console.warn(arguments)
-                    });
-                }
-            });
-        });
-        $(function() {
-            var btn = $('#buy-button');
-            $('#qnt').change(function() {
-                btn.attr('data-item-quantity', this.value);
-            })
-        });
-    </script>
-    <style type="text/css">
-        html, body {
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        html {
-            position: relative;
-            overflow: hidden;
-        }
-        html:before {
-            display: block;
-            position: fixed;
-            content: ' ';
-            width: 105%;
-            height: 105%;
-            margin: -2.5%;
-            z-index: -1;
-
-            background-image: url(./bg2.jpg);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-
-            -webkit-filter: blur(5px);
-            -moz-filter: blur(5px);
-            -o-filter: blur(5px);
-            -ms-filter: blur(5px);
-            filter: blur(4px);
-        }
-        body {
-            overflow-y: scroll;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .main {
-            max-width: 90%;
-            width: 23em;
-            margin: auto;
-
-            background-color: rgba(255, 255, 255, 0.62);
-            box-sizing: border-box;
-            padding-top: 0.5em;
-            border-radius: 1em;
-
-            text-align: center;
-            color: #E9524D;
-            font-family: 'Helvetica', 'Arial';
-        }
-        h1 {
-            background-image: url(./logo.svg);
-            background-repeat: no-repeat;
-            background-position: top right;
-            text-indent: -999em;
-            overflow: hidden;
-            height: 9em;
-            margin: 0;
-            display: block;
-            box-sizing: border-box;
-            padding: 1em 2em;
-            background-origin: content-box;
-            margin: 0;
-        }
-
-        section {
-            background-color: white;
-            padding: 1em;
-            border-radius: 0 0 1em 1em;
-        }
-
-        h2 {
-            font-size: 1.5em;
-            margin: 0;
-        }
-
-        h2 span {
-            font-size: .5em;
-            display: block;
-            text-align: left;
-        }
-        button {
-            font-family: inherit;
-            font-size: 0.8em;
-        }
-    </style>
 </head>
+
 <body>
-<div class="main">
-    <h1>JAM Conf Qc 2018</h1>
-    <section>
-        <h2><span>Register for</span> JAM Conf 2018!</h2>
-        <p>
-            <label>Number of attendees:
-                <select id="qnt">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                </select>
-            </label>
-        </p>
-        <p>
-            <button class="snipcart-add-item" id="buy-button"
-                    data-item-id="jam-conf-qc"
-                    data-item-name="JAM Conf QC"
-                    data-item-price="245.99"
-                    data-item-url="https://snipcart.github.io/event-tickets/"
+<!-- Start Header Area -->
+@include('layouts.partials.users._heading')
 
-                    data-item-custom1-name="Name"
-                    data-item-custom2-name="Company"
+<div class="spacer">
+@include('layouts.partials.users._navigate')<!-- Our Schedule Area Start -->
 
-                    data-item-shippable="false"
-                    data-item-metadata='{"fromHtml":true}'
-            >
-                Buy tickets
-            </button>
-        </p>
-    </section>
 </div>
+<!-- End Header Area -->
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div>
+
+
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>purchase Tickets</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="{{'home.index'}}">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="{{'cart.index'}}">Get Tickets</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+
+<!--================Cart Area =================-->
+<section class="cart_area">
+    <div class="container">
+        @if(session()->has('s uccess_message'))
+            <div class=" alert alert-success">
+                {{session()->get('success_message')}}
+            </div>
+        @endif
+        @if(count($errors)>0)
+            <div class=" alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li> {{$error}}</li>
+                    @endforeach
+                </ul>
+
+            </div>
+        @endif
+            @if(Cart::count()>0)
+                <h2>{{Cart::count()}}Ticket(s) added</h2>
+
+            @foreach(Cart::content() as $item)
+        <div class="cart_inner">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Event</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">No.Tickets</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <td>
+                            <div class="media">
+                                <div class="d-flex">
+                                    <img src="{{asset('img/cart.jpg')}}" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <p>{{$item->model->title}}</p>
+                                </div>
+                            </div>
+                        </td>
+
+
+
+                        <td>
+                            <h5>Ksh.{{$item->model->price}}</h5>
+                        </td>
+
+                        <td>
+                            <div class="product_count">
+                                <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
+                                       class="input-text qty">
+                                <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                        class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+                                <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                        class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                            </div>
+                        </td>
+                        <td>
+                            <h5>$1160.00</h5>
+
+                        </td>
+                    <tr>
+<td>  <form  action="{{route('cart.destroy',$item->rowId)}}" method="post"></form>
+    {{csrf_field()}}
+    {{method_field('DELETE')}}
+    <div class="checkout_btn_inner d-flex align-items-center">
+        <button type="submit" class="primary-btn">Remove </button>
+
+
+
+
+                        <td>
+                            <div class="checkout_btn_inner d-flex align-items-center">
+                                <a class="primary-btn" href="{{route('checkout.index')}}">Proceed to checkout</a>
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+                        @endforeach
+                    </tr>
+
+                        <td>
+                            <h5>Subtotal</h5>
+                        </td>
+                        <td>
+                            <h5>$2160.00</h5>
+                        </td>
+                        @else
+                            <h3>No tickets added!</h3>
+                            @endif
+
+                    <tr class="out_button_area">
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Cart Area =================-->
+
+@include('layouts.partials.users._scripts')
+
+<!-- start footer Area -->
+@include('layouts.partials.users._footer')
+
+<!-- End footer Area -->
 
 </body>
+
 </html>

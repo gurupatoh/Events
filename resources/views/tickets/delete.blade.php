@@ -23,14 +23,18 @@
     <div>
         <label for="summary">summary:</label>
         <input type="text" id="summary"name="summary" class="form-control"value="{{$ticket->summary}}"disabled>
-        <div><label for="summary">date:</label>
+        <div><label for="date">date:</label>
             <input type="datetime-local" id="date"name="date" class="form-control"value="{{$ticket->date}}"disabled>
-            <div><label for="summary">venue:</label>
+            <div><label for="venue">venue:</label>
                 <input type="text" id="venue"name="venue" class="form-control"value="{{$ticket->venue}}"disabled>
                 <div>
                     <div class="form-group">
-                        <label for="summary">guest:</label>
+                        <label for="guest">guest:</label>
                         <input type="text" id="guest"name="guest" class="form-control"value="{{$ticket->guest}}"disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">price:</label>
+                        <input type="text" id="guest"name="guest" class="form-control"value="{{$ticket->price}}"disabled>
                     </div>
                     <div class="form-group">
     <label for="summary">description:</label>

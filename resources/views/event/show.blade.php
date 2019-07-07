@@ -18,20 +18,15 @@
     <title>confer</title>
     <!--
             CSS
-            ============================================= -->
-    <link rel="stylesheet" href="{{asset('css/linearicons.css')}}">
-    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/themify-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}">
-    <link rel="stylesheet" href="{{asset('css/nice-select.css')}}">
-    <link rel="stylesheet" href="{{asset('css/nouislider.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/ion.rangeSlider.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/ion.rangeSlider.skinFlat.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/main.css')}}">
+           ============================================= -->
+
 </head>
 @include('layouts.partials.users._heading')
+
+<div class="spacer">
 @include('layouts.partials.users._navigate')<!-- Our Schedule Area Start -->
+
+</div>
 
 
 <body>
@@ -44,10 +39,10 @@
     <div class="container">
         <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
             <div class="col-first">
-                <h1>Event Details Page</h1>
+                <h1>Event Details </h1>
                 <nav class="d-flex align-items-center">
                     <a href="{{'home.index'}}">Home<span class="lnr lnr-arrow-right"></span></a>
-                    <a href="{{'event.show'}}">event-details</a>
+                    <a href="{{'event.show'}}">Event-details</a>
                 </nav>
             </div>
         </div>
@@ -62,37 +57,37 @@
             <div class="col-lg-6">
                 <div class="s_Product_carousel">
                     <div class="single-prd-item">
-                        <img class="img-fluid" src="{{asset('img/category/s-p1.jpg')}}" alt="">
+                        // @todo: querty image from database and propery resize
+
+                        <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
                     </div>
-                    <div class="single-prd-item">
-                        <img class="img-fluid" src="{{asset('img/category/s-p1.jpg')}}" alt="">
-                    </div>
-                    <div class="single-prd-item">
-                        <img class="img-fluid" src="{{asset('img/category/s-p1.jpg')}}" alt="">
-                    </div>
+
                 </div>
             </div>
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
-                    <h3>Faded SkyBlu Denim Jeans</h3>
-                    <h2>$149.99</h2>
-                    <ul class="list">
-                        <li><a class="active" href="#"><span>Category</span> : Household</a></li>
-                        <li><a href="#"><span>Availibility</span> : In Stock</a></li>
-                    </ul>
-                    <p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
-                        something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
-                        during the winter.</p>
-                    <div class="product_count">
-                        <label for="qty">Quantity:</label>
-                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+                    <h2><span>Event:</span>{{$ticket->title}}</h2>
+                    <h2><span>Ticket Price:</span>{{$ticket->price}}</h2>
+                    <div class="schedule-time-place">
+                        <h3><span>Date</span><i class="zmdi zmdi-time"></i> {{$ticket->date}}</h3>
+                        <h3><span>venue</span><i class="zmdi zmdi-map"></i> {{$ticket->venue}},Kenya</h3>
                     </div>
+                        <h2><span>status:</span>{{$ticket->status}}</h2>
+                    <h3><span>summary:</span></h3>
+                    <p>{{$ticket->summary}}</p>
+
+
                     <div class="card_area d-flex align-items-center">
-                        <a class="primary-btn" href="#">Add to Cart</a>
+                       {{-- <a class="primary-btn" href="/cart">Get Tickets</a>
+--}}
+                        <form action="{{route('cart.store')}}" method="post">
+                            {{csrf_field()}}
+                            <input type="hidden" name="id" value="{{$ticket->id}}">
+                            <input type="hidden" name="name" value="{{$ticket->title}}">
+                            <input type="hidden" name="price" value="{{$ticket->price}}">
+
+                            <button type="submit" class="primary-btn">Get Tickets </button>
+                        </form>
                         <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
                         <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
                     </div>

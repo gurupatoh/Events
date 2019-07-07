@@ -24,11 +24,10 @@
 
                             <li class="active"><a href="{{route('home.index')}}">Home</a></li>
                             <li><a href="{{route('event.index')}}">Events</a></li>
-
-                            <li><a href="speakers.html">Speakers</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="speakers.html">About us</a></li>
+                            <li><a href="#">login</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">About us</a></li>
 
                         </ul>
 
