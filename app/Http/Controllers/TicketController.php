@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Ticket;
 use Illuminate\Http\Request;
 use App\Http\Requests\TicketUpdateRequest;
+use Intervention\Image\Facades\Image;
+
 
 class TicketController extends Controller
 {
@@ -26,8 +28,11 @@ class TicketController extends Controller
      */
     public function create()
     {
-        return view('tickets.create');
+        $ticket = Ticket::latest()->first();
+
+        return view('tickets.create',compact('ticket'));
     }
+
 
     public function delete(Ticket $ticket)
     {
@@ -43,29 +48,41 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        Ticket::create([
-            'summary' => request('summary'),
-            'title' => request('title'),
-            'venue' => request('venue'),
-            'guest' => request('guest'),
-            'price' => request('price'),
-            'image' => request('image'),
 
 
-            'date' => request('date'),
-            'description' => request('description'),
-            'status' => request('status')]);
-        request()->validate([
+        $originalImage= $request->file('filename');
+        $thumbnailImage = Image::make($originalImage);
+        $thumbnailPath = public_path().'/thumbnail/';
+        $originalPath = public_path().'/images/';
+        $thumbnailImage->save($originalPath.time().$originalImage->getClientOriginalName());
+        $thumbnailImage->resize(150,150);
+        $thumbnailImage->save($thumbnailPath.time().$originalImage->getClientOriginalName());
 
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        $ticket= new Ticket();
+        $ticket->filename=time().$originalImage->getClientOriginalName();
+        $ticket->venue= $request->venue;
+        $ticket->date= $request->date;
+        $ticket->summary= $request->summary;
+        $ticket->status= $request->status;
+        $ticket->guest= $request->guest;
+        $ticket->description= $request->description;
+        $ticket->title= $request->title;
+        $ticket->price= $request->price;
+
+
+
+
+
+
+        $ticket->save();
+        $this->validate($request, [
+            'filename' => 'image|required|mimes:jpeg,png,jpg,gif,svg'
+
 
         ]);
-        $imageName = time() . '.' . request()->image->getClientOriginalExtension();
 
+        return redirect()->route('tickets.index')->with('success', 'Your images has been successfully Upload');
 
-        request()->image->move(public_path('images'), $imageName);
-        return redirect()->route('tickets.index')   ->with('success', 'You have successfully upload image.')
-            ->with('image', $imageName);
     }
 
     /**php
@@ -102,9 +119,10 @@ class TicketController extends Controller
         $ticket->summary = request('summary');
         $ticket->title = request('title');
         $ticket->date = request('date');
-        $ticket->venue = request('venue');
         $ticket->description = request('description');
         $ticket->status = request('status');
+        $ticket->venue = request('venue');
+
         $ticket->save();
 
         return redirect()->route('tickets.index')->withSuccess('Ticket has been updated');

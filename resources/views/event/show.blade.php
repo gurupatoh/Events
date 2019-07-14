@@ -55,15 +55,12 @@
     <div class="container">
         <div class="row s_product_inner">
             <div class="col-lg-6">
-                <div class="s_Product_carousel">
                     <div class="single-prd-item">
-                        // @todo: querty image from database and propery resize
-
-                        <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+                        <img   src="{{ URL::to('/') }}/images/{{ $ticket->filename }}" class="img-fluid" width="800" height="400"  />
                     </div>
 
-                </div>
             </div>
+
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
                     <h2><span>Event:</span>{{$ticket->title}}</h2>

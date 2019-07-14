@@ -87,7 +87,7 @@
                         <td>
                             <div class="media">
                                 <div class="d-flex">
-                                    <img src="{{asset('img/cart.jpg')}}" alt="">
+                                    <img src="{{ URL::to('/') }}/images/{{ $item->model->filename}}"  />
                                 </div>
                                 <div class="media-body">
                                     <p>{{$item->model->title}}</p>

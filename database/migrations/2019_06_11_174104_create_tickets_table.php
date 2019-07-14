@@ -19,7 +19,7 @@ class CreateTicketsTable extends Migration
             $table->string('guest');
             $table->string('summary');
             $table->dateTime('date');
-            $table->string('image');
+            $table->string('filename');
             $table->integer('price');
             $table->string('venue');
             $table->text('description');

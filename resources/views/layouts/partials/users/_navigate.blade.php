@@ -24,15 +24,15 @@
 
                             <li class="active"><a href="{{route('home.index')}}">Home</a></li>
                             <li><a href="{{route('event.index')}}">Events</a></li>
-                            <li><a href="#">login</a></li>
+                            <li><a href="{{route('login')}}">login</a></li>
                             <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="{{route('contact.index')}}">Contact</a></li>
+                            <li><a href="{{route('about.index')}}">About us</a></li>
 
                         </ul>
 
                         <!-- Get Tickets Button -->
-                        <a href="{{route('cart.index')}}" class="btn confer-btn mt-3 mt-lg-0 ml-3 ml-lg-5">Get Tickets <i class="zmdi zmdi-long-arrow-right"></i></a>
                     </div>
                     <!-- Nav End -->
                 </div>

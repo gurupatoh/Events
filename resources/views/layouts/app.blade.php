@@ -1,16 +1,14 @@
 <!doctype html>
 <html lang="en">
-@include('layouts.partials.admin._head')
+@include('layouts.partials.users._heading')
+
 
 
 <body>
-@include('layouts.partials.admin._navigation')
 
 <div class="container-fluid">
     <div class="row">
-        @include('layouts.partials.admin._alerts')
 
-        @include('layouts.partials.admin._sidebar')
 
 
         @yield('content')
@@ -18,7 +16,7 @@
 
     </div>
 </div>
-@include('layouts.partials.admin._script')
 
 </body>
 </html>
+

@@ -53,7 +53,17 @@
                                             <div class="single-schedule-tumb-info d-flex align-items-center">
                                                 <!-- Single Schedule Thumb -->
                                                 <div class="single-schedule-tumb">
-                                                    <img src="img/bg-img/10.jpg" alt="">
+                                                    <!-- image query-->
+
+                                                        <div class="row">
+                                                            <div class="col-md-8">
+                                                                <br/>
+                                                                <img src="{{ URL::to('/') }}/images/{{ $ticket->filename }}"  />
+
+
+                                                            </div>
+
+                                                        </div>
                                                 </div>
                                                 <!-- Single Schedule Info -->
 
